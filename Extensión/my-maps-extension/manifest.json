@@ -1,0 +1,18 @@
+{
+    "name": "My Maps Url Extractor & Editor",
+    "version": "1.0",
+    "description": "Automatiza la extracción y pegado de URLs en Google My Maps.",
+    "manifest_version": 3,
+    "action": {
+      "default_title": "Pulsa para iniciar el script",
+      "default_popup": "popup.html"
+    },
+    "permissions": [],
+    "content_scripts": [
+      {
+        "matches": ["*://www.google.com/maps/d/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
