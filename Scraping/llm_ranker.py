@@ -1,6 +1,7 @@
+# llm_ranker.py
 import requests
 
-def rank_urls_por_relevancia(query, urls, modelo="qwen1.5-4b-chat", bloque=30):
+def rank_urls_por_relevancia(query, urls, modelo="qwen2.5-7b-instruct", bloque=10):
     indices_ordenados = []
 
     for i in range(0, len(urls), bloque):
@@ -17,9 +18,7 @@ def rank_urls_por_relevancia(query, urls, modelo="qwen1.5-4b-chat", bloque=30):
         for j, url in enumerate(urls_bloque):
             prompt += f"{j}: {url}\n"
 
-        prompt += "\nRecuerda: SOLO responde con algo como esto: [1, 0, 2] con el orden que tu consideres adecuado en funcion a que url tiene más probabilidad de contener la información solicitada. "
-
-        print(f"🔎 DEBUG prompt para el ranker:\n{prompt}")
+        prompt += "\nRecuerda: ORDENA TODAS las URLs por relevancia. NO OMITAS NINGUNA. SOLO la lista. PASAME SOLO LA LISTA NINGUNA EXPLICACION POR FAVOR"
 
         try:
             response = requests.post(
@@ -30,7 +29,7 @@ def rank_urls_por_relevancia(query, urls, modelo="qwen1.5-4b-chat", bloque=30):
                     "temperature": 0,
                     "max_tokens": 1000,
                     "stop": None,
-                    "model": modelo
+                    "model": "qwen2.5-7b-instruct-1m"
                 }
             )
             respuesta = response.json()
@@ -40,9 +39,7 @@ def rank_urls_por_relevancia(query, urls, modelo="qwen1.5-4b-chat", bloque=30):
             if texto == "":
                 raise ValueError("Respuesta vacía del modelo")
 
-            # Extraemos la última línea útil
             texto = texto.splitlines()[-1].strip()
-
             if texto.startswith("[") and texto.endswith("]"):
                 indices_relativos = eval(texto)
                 if isinstance(indices_relativos, list):

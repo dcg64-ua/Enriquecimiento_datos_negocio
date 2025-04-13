@@ -23,21 +23,22 @@ HTML:
 <|im_start|>assistant
 """
 
-    response = requests.post(
-        "http://localhost:1234/v1/completions",
-        headers={"Content-Type": "application/json"},
-        json={
-            "prompt": prompt,
-            "temperature": 0.2,
-            "max_tokens": 4000,
-            "stop": ["<|im_end|>"],
-            "model": "Qwen1.5-4B-Chat-Q4_K_M"
-        }
-    )
-
     try:
+        response = requests.post(
+            "http://localhost:1234/v1/completions",
+            headers={"Content-Type": "application/json"},
+            json={
+                "prompt": prompt,
+                "temperature": 0.2,
+                "max_tokens": 4000,
+                "stop": ["<|im_end|>"],
+                "model": "qwen2.5-7b-instruct-1m"
+            },
+            timeout=60  # Evitar cuelgues largos
+        )
+        response.raise_for_status()
         return response.json()["choices"][0]["text"].strip()
-    except Exception as e:
+    except (requests.exceptions.RequestException, KeyError) as e:
         print("❌ Error al procesar la respuesta del modelo:", e)
-        print("Respuesta bruta:", response.text)
+        print("Respuesta bruta:", response.text if 'response' in locals() else "No se recibió respuesta.")
         return "NO ENCONTRADO"
