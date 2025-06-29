@@ -134,7 +134,7 @@
       </Placemark>
       <Placemark>
         <name>Lazy Lucy Burger</name>
-        <description>holahttp://lazylucyburger.com/</description>
+        <description>http://lazylucyburger.com/</description>
         <styleUrl>#icon-1899-0288D1</styleUrl>
         <Point>
           <coordinates>

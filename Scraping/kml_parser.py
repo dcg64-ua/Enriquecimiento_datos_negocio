@@ -13,5 +13,3 @@ def parse_kml(file_path):
             matches = re.findall(r'https?://[^\s"<]+', url_elem.text)
             urls.extend([url.strip() for url in matches])
     return urls
-
-
