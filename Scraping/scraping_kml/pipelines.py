@@ -11,10 +11,14 @@ from urllib.parse import urlparse
 
 def normalizar_url(raw_url):
     parsed = urlparse(raw_url)
-    netloc = parsed.netloc.replace("www.", "")
-    path = parsed.path.rstrip("/")
-    return f"{netloc}{path}"
+    netloc = parsed.netloc.replace("www.", "")  # Eliminar 'www.' si existe
+    path = parsed.path.rstrip("/")  # Eliminar la barra final si existe
 
+    # Eliminar cualquier cosa después del dominio (como parámetros o fragmentos)
+    path = path.split('?')[0].split('#')[0]
+
+    # Devolver la URL normalizada sin los parámetros ni fragmentos
+    return f"{netloc}{path}"
 
 
 class ScrapingKmlPipeline:
@@ -39,8 +43,8 @@ class GuardarHTMLenMySQL:
         url_normalizada = normalizar_url(item["url"])
         print(f"🔗 Guardando HTML de {url_normalizada} en la base de datos.")
         self.cursor.execute(
-            "REPLACE INTO html (url, html) VALUES (%s, %s)",
-            (url_normalizada, item["html"])
+            "REPLACE INTO html (url, html, profundidad) VALUES (%s, %s, %s)",
+            (url_normalizada, item["html"], item["profundidad"])
         )
         self.conn.commit()
         return item

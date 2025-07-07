@@ -8,6 +8,21 @@ from llm_ranker import rank_urls_por_relevancia
 from urllib.parse import urlparse
 from collections import defaultdict
 from guardar_respuestas import guardar_respuesta
+import mysql.connector
+from extractor import normalizar_url
+
+
+
+def database_connection():
+    conexion = mysql.connector.connect(
+    host="localhost",
+    port=3306,
+    user="root",
+    password="1573",
+    database="enriquecimiento_datos_negocio")
+
+    cursor = conexion.cursor(dictionary=True)
+    return conexion, cursor
 
 
 def dividir_en_bloques(lista, tam_bloque):
@@ -16,9 +31,13 @@ def dividir_en_bloques(lista, tam_bloque):
 def agrupar_por_raiz(data):
     grupos = defaultdict(list)
     for entrada in data:
-        dominio = urlparse(entrada["url"]).netloc
+        url = entrada["url"]
+        if not url.startswith("http://") and not url.startswith("https://"):
+            url = "http://" + url  # suposición básica
+        dominio = urlparse(url).netloc
         grupos[dominio].append(entrada)
     return grupos
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -37,9 +56,49 @@ if __name__ == "__main__":
     print(f"✅ Scraping completado. Resultados guardados en {args.db}")
     
 
+    
+    urls_normalizadas = [normalizar_url(url) for url in urls]
+    print("🔗 URLs normalizadas:", urls_normalizadas)
+
+    conexion, cursor = database_connection()
+
+    # Creamos la consulta para cada URL con un LIKE para que tome todas las URLs que empiecen con la URL normalizada
+    placeholders = ','.join([f"%s" for _ in urls_normalizadas])
+    print(f"🔗 Consultando la base de datos para URLs normalizadas con LIKE: {placeholders}")
+
+    # Preparamos la consulta con LIKE usando % al final
+    print("La profundidad máxima es:", args.deep)
+    consulta = (
+    "SELECT url, html, profundidad FROM html WHERE " +
+    " OR ".join([f"(url LIKE %s AND profundidad <= {args.deep})" for _ in urls_normalizadas]))
+
+
+    # Creamos las URLs normalizadas con el comodín '%' al final
+    urls_with_wildcard = [url + "%" for url in urls_normalizadas]
+
+    # Ejecutamos la consulta con las URLs normalizadas con el % al final
+    cursor.execute(consulta, urls_with_wildcard)
+    data = cursor.fetchall()
+    print(f"🔗 Se encontraron {len(data)} entradas en la base de datos para las URLs normalizadas.")
+
+
+
+    # Guardar el contenido extraído de la base de datos en un archivo JSON
+    with open("datos_desde_db.json", "w", encoding="utf-8") as f:
+        # Vaciar el archivo antes de escribir el nuevo contenido
+        f.truncate(0)
+        f.seek(0)
+        json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"💾 Archivo 'datos_desde_db.json' generado con {len(data)} entradas.")
+
+
+    cursor.close()
+    conexion.close()
     # Paso 2: Cargar los resultados
     with open(args.db, "r", encoding="utf-8") as f:
         data = json.load(f)
+
+        
 
     grupos = agrupar_por_raiz(data)
     for dominio, grupo in grupos.items():

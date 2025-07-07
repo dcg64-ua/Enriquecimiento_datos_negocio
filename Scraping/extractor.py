@@ -4,11 +4,19 @@ from scraping_kml.spiders.kml_spider import KmlSpider
 import mysql.connector
 from urllib.parse import urlparse
 
+from urllib.parse import urlparse
+
 def normalizar_url(raw_url):
     parsed = urlparse(raw_url)
-    netloc = parsed.netloc.replace("www.", "")
-    path = parsed.path.rstrip("/")
-    return f"{netloc}{path}"
+    netloc = parsed.netloc.replace("www.", "")  # Eliminar 'www.' si existe
+    path = parsed.path.rstrip("/")  # Eliminar la barra final si existe
+
+    # Eliminar cualquier cosa después del dominio (como parámetros o fragmentos)
+    path = path.split('?')[0].split('#')[0]
+
+    # Devolver solo el dominio, sin la barra final
+    return f"{netloc}"
+
 
 def url_ya_guardada(url, conexion):
     url_normalizada = normalizar_url(url)
@@ -42,7 +50,6 @@ def run_scraper(urls, query, db_path, deep):
     # Filtrar URLs que ya están en la base de datos
     for url in urls:
         if url_ya_guardada(url, conexion):
-            print(normalizar_url(url))
             print(f"🔗 URL ya guardada: {url}")
         else:
             print(normalizar_url(url))

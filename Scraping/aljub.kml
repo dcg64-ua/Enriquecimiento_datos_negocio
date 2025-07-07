@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Mapa sin nombre</name>
+    <description/>
+    <Style id="icon-1899-0288D1-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-0288D1-nodesc-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-nodesc-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Capa sin nombre</name>
+      <Placemark>
+        <name>Sprinter</name>
+        <description><![CDATA[https://www.sprintersports.com/?utm_source=seo_local&utm_medium=organic&utm_campaign=sprinter_elche_aljub]]></description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7192789,38.2621834,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>General Óptica</name>
+        <description><![CDATA[https://www.generaloptica.es/es/?utm_source=gmb&utm_medium=organic&utm_campaign=Elche&utm_term=1150]]></description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7190211,38.2624308,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kiwoko. Mundo Animal</name>
+        <description><![CDATA[https://tiendas.kiwoko.com/comunidad-valenciana/alicante/elche/kiwoko-elche-aljub-93?utm_medium=maps&utm_source=google]]></description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7195559,38.2622581,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Base Selection Elche</name>
+        <description>http://base.net/</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7191899,38.2625712,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Joyerías Siglo XXI</name>
+        <description></description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7198038,38.2624647,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>K-tuin Elche · Apple Premium Partner y Servicio Técnico Autorizado</name>
+        <description>https://www.k-tuin.com/</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7209142,38.2619782,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>INSIDE - Tienda de Ropa y Zapatos</name>
+        <description><![CDATA[https://inside-shops.com/?utm_source=GBP&utm_medium=organic]]></description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7200158,38.2626344,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pepco</name>
+        <description>https://pepco.es/</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7192083,38.2623067,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Restaurante Japonés SAOKI SUSHI ELCHE (CC LALJUB)</name>
+        <description>https://www.saokisushi.com/</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.7204419,38.2624263,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>VIPS Smart</name>
+        <description>http://www.vips.es/vipsmart</description>
+        <styleUrl>#icon-1899-0288D1</styleUrl>
+        <Point>
+          <coordinates>
+            -0.720603,38.262393,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>FYLUXURY</name>
+        <styleUrl>#icon-1899-0288D1-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            -0.721722,38.2624338,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
