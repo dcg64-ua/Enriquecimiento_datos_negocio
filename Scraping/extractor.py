@@ -41,7 +41,7 @@ def run_scraper(urls, query, db_path, deep):
     conexion = mysql.connector.connect(
         host="localhost",
         port=3306,
-        user="root",
+        user="user",
         password="1573",
         database="enriquecimiento_datos_negocio"
     )

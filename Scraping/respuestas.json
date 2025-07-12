@@ -18,5 +18,25 @@
     "url": "noki.es/politica-privacidad",
     "pregunta": "que tipo de negocio es",
     "respuesta": "El tipo de negocio es **restaurante** o **sushi bar**, ya que ofrece servicios como reservas, carta de vinos y postres, entre otros, lo cual sugiere una operación gastronómica."
+  },
+  {
+    "url": "lastartasdejulita.es",
+    "pregunta": "que tipo de negocio es",
+    "respuesta": "El tipo de negocio mencionado en el HTML es: **Venta de tartas y productos relacionados con queso, como postres y pasteles.**"
+  },
+  {
+    "url": "noki.es",
+    "pregunta": "que tipo de negocio es",
+    "respuesta": "El tipo de negocio es un restaurante especializado en cocina asiática, específicamente sushi y otros platos orientales."
+  },
+  {
+    "url": "lastartasdejulita.es",
+    "pregunta": "que tipo de negocio es",
+    "respuesta": "El tipo de negocio mencionado en el HTML es **\"Tartas de queso cremosas\"** o **\"Tartas\"**, específicamente \"CHEESECAKE LOVERS\"."
+  },
+  {
+    "url": "noki.es",
+    "pregunta": "que tipo de negocio es",
+    "respuesta": "El tipo de negocio es un restaurante especializado en cocina asiática, específicamente sushi y otros platos orientales."
   }
 ]
